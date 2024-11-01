@@ -16,7 +16,7 @@ class DetailPage extends StatelessWidget {
       body: PokemonDetailPage(pokemon: pokemon,),
     );
   }
-  
+
 }
 
 class PokemonDetailPage extends StatefulWidget {
@@ -43,32 +43,55 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
   fetchData() => PokemonDetailRepository().details(widget.pokemon.url);
 
   _loadImage() async {
-    image = Image.network(ImageHelper.pokemonImageUrl(widget.pokemon.url));
+    image = Image.network(ImageHelper.pokemonImageUrl(widget.pokemon.url),);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<PokemonDetail>(
-      future: response,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          PokemonDetail response = snapshot.data as PokemonDetail;
-          return Center(child:
-              Column(
-                children: [
-                  Expanded(
-                      child: Image(image: image.image)
+    return Scaffold(
+      body: FutureBuilder<PokemonDetail>(
+        future: response,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            PokemonDetail response = snapshot.data as PokemonDetail;
+            return Column(
+              children: [
+                Container(height: 200,),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                    margin: const EdgeInsets.all(8.0),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Stack(
+                        alignment: Alignment.topCenter,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                              top: -150,
+                              child: Column(
+                                children: [
+                                  Image(image: image.image, width: 200, height: 200,),
+                                  Text(response.name, style: const TextStyle(fontSize: 24))
+                                ],
+                              )
+                          ),
+                        ]
+                    ),
                   ),
-                  Text(response.name),
-                ],
-              )
-          );
-        } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
-        }
-
-        return const Center(child: CircularProgressIndicator());
-      },
+                )
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
+      backgroundColor: Colors.teal,
     );
   }
 
