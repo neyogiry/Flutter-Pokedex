@@ -3,6 +3,8 @@ import 'package:app/domain/model.dart';
 import 'package:app/domain/pokemon_detail.dart';
 import 'package:flutter/material.dart';
 
+import '../util/image_helper.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key, required this.pokemon}) : super(key: key);
 
@@ -28,15 +30,21 @@ class PokemonDetailPage extends StatefulWidget {
 }
 
 class _PokemonDetailPageState extends State<PokemonDetailPage> {
+  late Image image;
   late Future<PokemonDetail> response;
 
   @override
   void initState() {
     super.initState();
+    _loadImage();
     response = fetchData();
   }
 
   fetchData() => PokemonDetailRepository().details(widget.pokemon.url);
+
+  _loadImage() async {
+    image = Image.network(ImageHelper.pokemonImageUrl(widget.pokemon.url));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +53,16 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           PokemonDetail response = snapshot.data as PokemonDetail;
-          return Text("${response.name}",);
+          return Center(child:
+              Column(
+                children: [
+                  Expanded(
+                      child: Image(image: image.image)
+                  ),
+                  Text(response.name),
+                ],
+              )
+          );
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
