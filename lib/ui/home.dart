@@ -13,11 +13,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text('Pokedex'),
+        title: const Center(
+          child: Text('Pokedex', style: TextStyle(color: Colors.white),),
         ),
-        backgroundColor: Color(0xFFD53B47),
-        systemOverlayStyle: SystemUiOverlayStyle(
+        backgroundColor: const Color(0xFFD53B47),
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Color(0xFFD53B47),
         ),
       ),
