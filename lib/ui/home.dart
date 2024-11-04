@@ -1,6 +1,7 @@
 import 'package:app/data/pokedex_repository.dart';
 import 'package:app/domain/model.dart';
 import 'package:app/ui/detail.dart';
+import 'package:app/util/extensions.dart';
 import 'package:app/util/image_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -123,7 +124,7 @@ class _PokemonItemState extends State<PokemonItem> {
             Expanded(
                 child: Image(image: image.image)
             ),
-            Text(widget.name),
+            Text(widget.name.capitalize()),
           ],
         ),
       ),
