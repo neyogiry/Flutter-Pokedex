@@ -56,7 +56,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
           Pokedex response = snapshot.data as Pokedex;
           List<Pokemon> list = response.results;
           return GridView.builder(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 30),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
