@@ -6,6 +6,10 @@
 
 Welcome to the Pokedex App! This Flutter application allows you to explore and discover Pokémon in a simple and fun way. Using Flutter, we have created an attractive and smooth interface that adapts to multiple platforms, allowing you to enjoy the experience on both mobile devices and the web.
 
+<p align="center">
+<img src="/readme/pokemon_list_iOS.png" width="320"/>
+</p>
+
 ## API
 <img src="https://user-images.githubusercontent.com/24237865/83422649-d1b1d980-a464-11ea-8c91-a24fdf89cd6b.png" align="right" width="21%"/>
 
