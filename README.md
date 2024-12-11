@@ -13,6 +13,9 @@ Welcome to the Pokedex App! This Flutter application allows you to explore and d
 <img src="/readme/pokemon_list_iOS.png" width="320"/>
 </p>
 
+## Requirements
+Flutter: 3.24.4 <br>
+
 ## API
 <img src="https://user-images.githubusercontent.com/24237865/83422649-d1b1d980-a464-11ea-8c91-a24fdf89cd6b.png" align="right" width="21%"/>
 
